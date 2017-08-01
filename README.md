@@ -6,7 +6,7 @@ A web front end for my solar powered weather station. Built on lighttp, sqlite3,
 ![alt text](http://i.imgur.com/mCtV8hN.png)
 
 Lightning sensor: https://github.com/pcfens/RaspberryPi-AS3935
-
+Humidity/Pressure/Temperature sensor: https://github.com/adafruit/Adafruit_Python_BME280
 
 Cron Entries:
 */10 * * * * python /home/pi/WeatherDashboard/cpuTemp.py
