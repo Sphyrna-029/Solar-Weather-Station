@@ -1,10 +1,12 @@
 <?PHP
   $db = new SQLite3('/home/pi/WeatherDashboard/weatherdatabase.db');
-  $temp = $db->query('SELECT temperature, max(tdate) FROM temp;');
+  $temp = $db->query('SELECT temperature, max(tdate) FROM multisensor;');
   $strikes = $db->query('SELECT COUNT(*) FROM strikes WHERE tdate >= datetime(\'now\', \'-1 day\');');
   $strikeD = $db->query('SELECT * FROM strikes LIMIT 50 OFFSET (SELECT COUNT(*) FROM strikes)-50;');
   $humidity = $db->query('SELECT humidity FROM multisensor ORDER BY humidity DESC LIMIT 1;');
   $pressure = $db->query('SELECT pressure FROM multisensor ORDER BY pressure DESC LIMIT 1;');
+  $volts = $db->query('SELECT bvolts FROM power ORDER BY bvolts DESC LIMIT 1;');
+  $bvolts = $volts->fetchArray();
   $pressurepascals = $pressure->fetchArray();
   $humiditypercent = $humidity->fetchArray();
   $strikesrow = $strikes->fetchArray();
@@ -113,15 +115,15 @@
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Dashboard</h1>
+          <h1 class="page-header">Dashboard<div class="pull-right"><img src="/images/battery.png" width="50" height="50"> <?php echo $bvolts[0];?>v</div></h1>
 
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
               <div class="outer_circle">
-                <div class="inner_circle"><?php echo $temprow[0];?></div>
+                <div class="inner_circle"><?php echo $temprow[0];?>c</div>
               </div>
-              <h4>Temperature C</h4>
-              <span class="text-muted">CPU</span>
+              <h4>Temperature</h4>
+              <span class="text-muted">Celcius</span>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
               <div class="outer_circle">
