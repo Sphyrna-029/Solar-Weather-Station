@@ -11,17 +11,16 @@ Humidity/Pressure/Temperature sensor: https://github.com/adafruit/Adafruit_Pytho
 
 Voltage/Current sensor: https://github.com/chrisb2/pi_ina219
 
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 Cron Entries:
 */10 * * * * python /home/pi/WeatherDashboard/cpuTemp.py
 
 */10 * * * * python /home/pi/WeatherDashboard/MultiSensor.py
 
 */10 * * * * python /home/pi/WeatherDashboard/power.py
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 Database Schema:
 
 CREATE TABLE temps (tdate DATE, ttime TIME, ttype TEXT, temperature NUMERIC);
@@ -31,4 +30,3 @@ CREATE TABLE strikes(tdate TEXT, distance TEXT);
 CREATE TABLE power(tdate TEXT, bvolts NUMERIC, bamps NUMERIC, bwatts NUMERIC);
 
 CREATE TABLE multisensor(tdate TEXT, humidity NUMERIC, pressure NUMERIC, temperature NUMERIC);
-**************************************************************
