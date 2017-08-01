@@ -3,6 +3,10 @@
   $temp = $db->query('SELECT temperature, max(tdate) FROM temp;');
   $strikes = $db->query('SELECT COUNT(*) FROM strikes WHERE tdate >= datetime(\'now\', \'-1 day\');');
   $strikeD = $db->query('SELECT * FROM strikes LIMIT 50 OFFSET (SELECT COUNT(*) FROM strikes)-50;');
+  $humidity = $db->query('SELECT humidity FROM multisensor ORDER BY humidity DESC LIMIT 1;');
+  $pressure = $db->query('SELECT pressure FROM multisensor ORDER BY pressure DESC LIMIT 1;');
+  $pressurepascals = $pressure->fetchArray();
+  $humiditypercent = $humidity->fetchArray();
   $strikesrow = $strikes->fetchArray();
   $temprow = $temp->fetchArray();
   /*$db->close();*/
@@ -64,6 +68,14 @@
             font-size: 90px;
             color: white;
           }
+ 
+          .inner_pcircle{
+             font-size: 45px;
+             color: white;
+          }
+
+
+
      </style>
 
   </head>
@@ -119,14 +131,18 @@
               <span class="text-muted">Past 24 Hours</span>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <div class="outer_circle">
+                 <div class="inner_circle"><?php echo $humiditypercent[0];?>%</div>
+            </div>
               <h4>Humidity</h4>
-              <span class="text-muted">Something else</span>
+              <span class="text-muted">Percentage</span>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Battery volage</h4>
-              <span class="text-muted">Something else</span>
+              <div class="outer_circle">
+                  <div class="inner_pcircle"><?php echo $pressurepascals[0];?>hPa</div>
+              </div>
+              <h4>Pressure</h4>
+              <span class="text-muted">hectopascals</span>
             </div>
           </div>
 
