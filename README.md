@@ -3,7 +3,7 @@
 
 A web front end for my solar powered weather station. Built on lighttp, sqlite3, and python. Capable of detecting lightning strikes but more features to come.
 
-![alt text](http://i.imgur.com/mCtV8hN.png)
+![alt text](http://i.imgur.com/h6EX04n.png)
 
 Lightning sensor: https://github.com/pcfens/RaspberryPi-AS3935
 
