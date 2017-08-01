@@ -5,14 +5,14 @@ A web front end for my solar powered weather station. Built on lighttp, sqlite3,
 
 ![alt text](http://i.imgur.com/h6EX04n.png)
 
-Lightning sensor: https://github.com/pcfens/RaspberryPi-AS3935
+#Lightning sensor: https://github.com/pcfens/RaspberryPi-AS3935
 
-Humidity/Pressure/Temperature sensor: https://github.com/adafruit/Adafruit_Python_BME280
+#Humidity/Pressure/Temperature sensor: https://github.com/adafruit/Adafruit_Python_BME280
 
-Voltage/Current sensor: https://github.com/chrisb2/pi_ina219
+#Voltage/Current sensor: https://github.com/chrisb2/pi_ina219
 
 
-Cron Entries:
+##Cron Entries:
 */10 * * * * python /home/pi/WeatherDashboard/cpuTemp.py
 
 */10 * * * * python /home/pi/WeatherDashboard/MultiSensor.py
@@ -21,7 +21,7 @@ Cron Entries:
 
 
 
-Database Schema:
+##Database Schema:
 
 CREATE TABLE temps (tdate DATE, ttime TIME, ttype TEXT, temperature NUMERIC);
 
