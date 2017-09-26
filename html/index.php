@@ -1,19 +1,4 @@
-<?PHP
-  $db = new SQLite3('/home/pi/WeatherDashboard/weatherdatabase.db');
-  $temp = $db->query('SELECT temperature, max(tdate) FROM multisensor;');
-  $strikes = $db->query('SELECT COUNT(*) FROM strikes WHERE tdate >= datetime(\'now\', \'-1 day\');');
-  $strikeD = $db->query('SELECT * FROM strikes LIMIT 50 OFFSET (SELECT COUNT(*) FROM strikes)-50;');
-  $humidity = $db->query('SELECT humidity FROM multisensor ORDER BY humidity DESC LIMIT 1;');
-  $pressure = $db->query('SELECT pressure FROM multisensor ORDER BY pressure DESC LIMIT 1;');
-  $volts = $db->query('SELECT bvolts FROM power ORDER BY bvolts DESC LIMIT 1;');
-  $bvolts = $volts->fetchArray();
-  $pressurepascals = $pressure->fetchArray();
-  $humiditypercent = $humidity->fetchArray();
-  $strikesrow = $strikes->fetchArray();
-  $temprow = $temp->fetchArray();
-  /*$db->close();*/
-?>
-
+<?php include("sql.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -97,11 +82,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
+            <li><a href="#"></a></li>
           </ul>
-          <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Search...">
-          </form>
         </div>
       </div>
     </nav>
@@ -110,12 +92,12 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Reports</a></li>
+            <li class="active"><a href="index.php">Overview <span class="sr-only">(current)</span></a></li>
+            <li><a href="/reports.php">Reports</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Dashboard<div class="pull-right"><img src="/images/battery.png" width="50" height="50"> <?php echo $bvolts[0];?>v</div></h1>
+          <h1 class="page-header">Dashboard<div class="pull-right" class="align-middle"><img src="/images/battery.png" width="50" height="50"><span id="volts"><?php echo $bvolts[0];?>v</span></div></h1>
 
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
@@ -184,5 +166,26 @@
     <script src="../../assets/js/vendor/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script>
+        var colorThreshold = document.getElementById("volts");
+        var voltage = "<?php echo $bvolts[0];?>";
+
+        function changeColor(val) {
+            var color = "green";
+                
+            if (val > 11 && val < 12) {
+                color = "yellow";
+            } else if (val <= 11) {
+                color = "red";
+            }
+    
+            colorThreshold.style.color = color;
+            console.log(colorThreshold)
+            console.log(voltage)
+            console.log(color)
+        }
+
+        changeColor(voltage);
+    </script>
   </body>
 </html>
