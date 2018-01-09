@@ -33,9 +33,5 @@ api.add_resource(Strikes, '/strikes') # Route_1
 api.add_resource(Multidata, '/multidata')
 api.add_resource(Power, '/power')
 
-#api.add_resource(Tracks, '/tracks') # Route_2
-#api.add_resource(Employees_Name, '/employees/<employee_id>') # Route_3
-
-
 if __name__ == '__main__':
      app.run()
