@@ -21,6 +21,8 @@ A web front end for my solar powered weather station. Built on lighttp, sqlite3,
 
 */10 * * * * python /home/pi/WeatherDashboard/power.py
 
+# Requires sqlite for php
+
 
 
 # Database Schema:
