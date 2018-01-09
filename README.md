@@ -38,11 +38,11 @@ CREATE TABLE multisensor(tdate TEXT, humidity NUMERIC, pressure NUMERIC, tempera
 ```
 
 
-# Baby API
+# Tiny API
 
 Implemented a read only api in flask and apache wsgi. Goals are to allow multiple weather stations to communicate with one server allowing station monitoring, lightning triangulation, and weather modeling. 
 
-**Live Demo:**
-http://api.zerogravityantfarm.com/multidata
-http://api.zerogravityantfarm.com/power
-http://api.zerogravityantfarm.com/strikes
+**Live Demo:** <br />
+http://api.zerogravityantfarm.com/multidata <br />
+http://api.zerogravityantfarm.com/power <br />
+http://api.zerogravityantfarm.com/strikes <br />
