@@ -36,3 +36,8 @@ CREATE TABLE power(tdate TEXT, bvolts NUMERIC, bamps NUMERIC, bwatts NUMERIC);
 
 CREATE TABLE multisensor(tdate TEXT, humidity NUMERIC, pressure NUMERIC, temperature NUMERIC);
 ```
+
+
+# Baby API
+
+Implemented a read only api in flask and apache wsgi. Goals are to allow multiple weather stations to communicate with one server allowing station monitoring, lightning triangulation, and weather modeling. 
