@@ -20,7 +20,7 @@ class Strikes(Resource):
         print(request.json)
         tdate = request.json['Date']
         distance = request.json['Distance']
-        query = conn.execute("insert into strikes values(null,'{0}','{1}')".format(tdate,distance))
+        query = conn.execute("insert into strikes values('{0}','{1}')".format(tdate,distance))
         return {'status':'success'}
 
 class Multidata(Resource):
