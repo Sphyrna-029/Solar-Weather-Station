@@ -10,9 +10,18 @@ api = Api(app)
 
 class Strikes(Resource):
     def get(self):
-        conn = db_connect.connect() # connect to database
-        query = conn.execute("select tdate, distance from strikes") # This line performs query and returns json result
-        return {'strikes': [i[0] for i in query.cursor.fetchall()]} # Fetches first column that is Employee ID
+        conn = db_connect.connect() 
+        query = conn.execute("select tdate, distance from strikes") 
+        return {'strikes': [dict(zip(tuple (query.keys()) ,i)) for i in query.cursor.fetchall()]}
+
+
+    def post(self):
+        conn = db_connect.connect()
+        print(request.json)
+        tdate = request.json['Date']
+        distance = request.json['Distance']
+        query = conn.execute("insert into strikes values(null,'{0}','{1}')".format(tdate,distance))
+        return {'status':'success'}
 
 class Multidata(Resource):
     def get(self):
@@ -29,9 +38,10 @@ class Power(Resource):
         return jsonify(result)
 
 
-api.add_resource(Strikes, '/strikes') # Route_1
+api.add_resource(Strikes, '/strikes') 
 api.add_resource(Multidata, '/multidata')
 api.add_resource(Power, '/power')
+
 
 if __name__ == '__main__':
      app.run()
