@@ -46,3 +46,5 @@ Implemented a read only api in flask and apache wsgi. Goals are to allow multipl
 http://api.zerogravityantfarm.com/multidata <br />
 http://api.zerogravityantfarm.com/power <br />
 http://api.zerogravityantfarm.com/strikes <br />
+
+Api example followed from here: https://github.com/sagaragarwal94/python_rest_flask
