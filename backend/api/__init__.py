@@ -18,8 +18,8 @@ class Strikes(Resource):
     def post(self):
         conn = db_connect.connect()
         print(request.json)
-        tdate = request.json['Date']
-        distance = request.json['Distance']
+        tdate = request.json['tdate']
+        distance = request.json['distance']
         query = conn.execute("insert into strikes values('{0}','{1}')".format(tdate,distance))
         return {'status':'success'}
 
