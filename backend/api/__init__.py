@@ -4,7 +4,7 @@ from sqlalchemy import create_engine
 from json import dumps
 from flask_jsonpify import jsonify
 
-db_connect = create_engine('sqlite:////home/kickinwing/Solar-Weather-Station/backend/weatherdatabase.db')
+db_connect = create_engine('sqlite:////home/di0de/Solar-Weather-Station/backend/weatherdatabase.db')
 app = Flask(__name__)
 api = Api(app)
 
@@ -12,14 +12,14 @@ class NodesList(Resource):
     def get(self):
         conn = db_connect.connect()
         query = conn.execute("select * from nodes")
-        return {'strikes': [dict(zip(tuple (query.keys()) ,i)) for i in query.cursor.fetchall()]}
+        return {'nodes': [dict(zip(tuple (query.keys()) ,i)) for i in query.cursor.fetchall()]}
 
     def post(self):
         conn = db_connect.connect()
         print(request.json)
         nodeid = request.json['nodeid']
         latitude = request.json['lattitude']
-		longitude = request.json['longitude']
+        longitude = request.json['longitude']
         status = request.json['status']
         dateadded = request.json['dateadded']
         query = conn.execute("insert into nodes values('{0}', '{1}', '{2}', '{3}', '{4}')".format(nodeid, latitude, longitude, status, dateadded))
@@ -40,7 +40,7 @@ class Nodes(Resource):
 class Strikes(Resource):
     def get(self, nodeid):
         conn = db_connect.connect()
-        query = conn.execute("select ddate, distance from strikes where nodeid = " + nodeid + ";")
+        query = conn.execute("select date, distance from strikes where nodeid = " + nodeid + ";")
         return {'strikes': [dict(zip(tuple (query.keys()) ,i)) for i in query.cursor.fetchall()]}
 
 
@@ -56,7 +56,7 @@ class Strikes(Resource):
 class Multidata(Resource):
     def get(self, nodeid):
         conn = db_connect.connect()
-        query = conn.execute("select tdate, humidity, pressure, temperature from multisensor where nodeid = " + nodeid + ";")
+        query = conn.execute("select date, humidity, pressure, temperature from multisensor where nodeid = " + nodeid + ";")
         result = {'data': [dict(zip(tuple (query.keys()) ,i)) for i in query.cursor]}
         return jsonify(result)
 
@@ -84,12 +84,12 @@ class Power(Resource):
         volts = request.json['volts']
         amps = request.json['amps']
         watts = request.json['watts']
-        query = conn.execute("insert into strikes values('{0}', '{1}', '{2}', '{3}', '{4}')".format(nodeid, date, volts, amps, watts))
+        query = conn.execute("insert into power values('{0}', '{1}', '{2}', '{3}', '{4}')".format(nodeid, date, volts, amps, watts))
         return {'status':'success'}
 
 
-api.add_resources(NodesList, '/nodes')
-api.add_resources(Nodes, '/nodes/<nodeid>')
+api.add_resource(NodesList, '/nodes')
+api.add_resource(Nodes, '/nodes/<nodeid>')
 api.add_resource(Strikes, '/nodes/<nodeid>/strikes')
 api.add_resource(Multidata, '/nodes/<nodeid>/multidata')
 api.add_resource(Power, '/nodes/<nodeid>/power')
