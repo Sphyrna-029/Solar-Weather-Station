@@ -4,7 +4,7 @@ from sqlalchemy import create_engine
 from json import dumps
 from flask_jsonpify import jsonify
 
-db_connect = create_engine('sqlite:////home/kickinwing/Solar-Weather-Station/backend/weatherdatabase.db')
+db_connect = create_engine('sqlite:////home/di0de/Solar-Weather-Station/backend/apidatabase.db')
 app = Flask(__name__)
 api = Api(app)
 
@@ -28,19 +28,19 @@ class NodesList(Resource):
 class Nodes(Resource):
     def get(self, nodeid):
         conn = db_connect.connect()
-        query = conn.execute("select * from nodes where nodeid = " + nodeid + ";")
+        query = conn.execute("select * from nodes where nodeid = '" + nodeid + "';")
         return {nodeid : [dict(zip(tuple (query.keys()) ,i)) for i in query.cursor.fetchall()]}
 
     def delete(self, nodeid):
         conn = db_connect.connect()
-        query = conn.execute("delete from nodes where nodeid = " + nodeid + ";")
+        query = conn.execute("delete from nodes where nodeid = '" + nodeid + "';")
         return {'status':'succcess'}
 
 
 class Strikes(Resource):
     def get(self, nodeid):
         conn = db_connect.connect()
-        query = conn.execute("select date, distance from strikes where nodeid = " + nodeid + ";")
+        query = conn.execute("select * from strikes where nodeid = '" + nodeid + "';")
         return {'strikes': [dict(zip(tuple (query.keys()) ,i)) for i in query.cursor.fetchall()]}
 
 
@@ -56,7 +56,7 @@ class Strikes(Resource):
 class Multidata(Resource):
     def get(self, nodeid):
         conn = db_connect.connect()
-        query = conn.execute("select date, humidity, pressure, temperature from multisensor where nodeid = " + nodeid + ";")
+        query = conn.execute("select date, humidity, pressure, temperature from multisensor where nodeid = '" + nodeid + "';")
         result = {'data': [dict(zip(tuple (query.keys()) ,i)) for i in query.cursor]}
         return jsonify(result)
 
