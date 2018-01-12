@@ -45,7 +45,7 @@ http://api.zerogravityantfarm.com/multidata <br />
 http://api.zerogravityantfarm.com/power <br />
 http://api.zerogravityantfarm.com/strikes <br />
 
-API Endpoint Resources: (/var/www/api/api)
+API Endpoint Resources:
 
 	/nodes
 		GET - List nodes, locations, and status (online/offline)
