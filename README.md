@@ -25,18 +25,16 @@ A web front end for my solar powered weather station. Built on lighttp, sqlite3,
 
 
 
-# Database Schema:
-
+# Database Schema (NEW):
 ```
-CREATE TABLE temps (tdate DATE, ttime TIME, ttype TEXT, temperature NUMERIC);
+CREATE TABLE nodes(nodeid TEXT, latitude NUMERIC, longitude NUMERIC, status NUMERIC, dateadded DATE);
+		
+CREATE TABLE strikes(nodeid TEXT, date DATE, distance NUMERIC);
 
-CREATE TABLE strikes(tdate TEXT, distance TEXT);
+CREATE TABLE power(nodeid TEXT, date DATE, volts NUMERIC, amps NUMERIC, watts NUMERIC);
 
-CREATE TABLE power(tdate TEXT, bvolts NUMERIC, bamps NUMERIC, bwatts NUMERIC);
-
-CREATE TABLE multisensor(tdate TEXT, humidity NUMERIC, pressure NUMERIC, temperature NUMERIC);
+CREATE TABLE multisensor(nodeid TEXT, date DATE, humidity NUMERIC, pressure NUMERIC, temperature NUMERIC);
 ```
-
 
 # Tiny API
 
