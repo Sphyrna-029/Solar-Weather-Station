@@ -18,10 +18,11 @@ class NodesList(Resource):
         conn = db_connect.connect()
         print(request.json)
         nodeid = request.json['nodeid']
-        location = request.json['location']
+        lattitude = request.json['lattitude']
+		longitude = request.json['longitude']
         status = request.json['status']
         dateadded = request.json['dateadded']
-        query = conn.execute("insert into nodes values('{0}', '{1}', '{2}', '{3}')".format(nodeid, location, status, dateadded))
+        query = conn.execute("insert into nodes values('{0}', '{1}', '{2}', '{3}', '{4}')".format(nodeid, lattitude, longitude, status, dateadded))
         return {'status':'success'}
 
 class Nodes(Resource):
