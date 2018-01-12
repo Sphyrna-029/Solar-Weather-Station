@@ -4,7 +4,7 @@ from sqlalchemy import create_engine
 from json import dumps
 from flask_jsonpify import jsonify
 
-db_connect = create_engine('sqlite:////home/di0de/Solar-Weather-Station/backend/weatherdatabase.db')
+db_connect = create_engine('sqlite:////home/kickinwing/Solar-Weather-Station/backend/weatherdatabase.db')
 app = Flask(__name__)
 api = Api(app)
 
