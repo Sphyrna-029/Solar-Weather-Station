@@ -4,7 +4,7 @@ from sqlalchemy import create_engine
 from json import dumps
 from flask_jsonpify import jsonify
 
-db_connect = create_engine('sqlite:////home/di0de/Solar-Weather-Station/backend/weatherdatabase.db')
+db_connect = create_engine('sqlite:////home/kickinwing/Solar-Weather-Station/backend/weatherdatabase.db')
 app = Flask(__name__)
 api = Api(app)
 
@@ -18,11 +18,11 @@ class NodesList(Resource):
         conn = db_connect.connect()
         print(request.json)
         nodeid = request.json['nodeid']
-        lattitude = request.json['lattitude']
+        latitude = request.json['lattitude']
 		longitude = request.json['longitude']
         status = request.json['status']
         dateadded = request.json['dateadded']
-        query = conn.execute("insert into nodes values('{0}', '{1}', '{2}', '{3}', '{4}')".format(nodeid, lattitude, longitude, status, dateadded))
+        query = conn.execute("insert into nodes values('{0}', '{1}', '{2}', '{3}', '{4}')".format(nodeid, latitude, longitude, status, dateadded))
         return {'status':'success'}
 
 class Nodes(Resource):
@@ -49,7 +49,7 @@ class Strikes(Resource):
         print(request.json)
         date = request.json['date']
         distance = request.json['distance']
-        query = conn.execute("insert into strikes values('{0}','{1}', '{2}')".format(nodeid, date, distance))
+        query = conn.execute("insert into strikes values('{0}', '{1}', '{2}')".format(nodeid, date, distance))
         return {'status':'success'}
 
 
@@ -67,7 +67,7 @@ class Multidata(Resource):
         humidity = request.json['humidity']
         pressure = request.json['pressure']
         temperature = request.json['temperature']
-        query = conn.execute("insert into multisensor values('{0}','{1}', '{2}', '{3}', '{4}')".format(nodeid, date, humidity, pressure, temperature))
+        query = conn.execute("insert into multisensor values('{0}', '{1}', '{2}', '{3}', '{4}')".format(nodeid, date, humidity, pressure, temperature))
         return {'status':'success'}
 
 class Power(Resource):
@@ -84,7 +84,7 @@ class Power(Resource):
         volts = request.json['volts']
         amps = request.json['amps']
         watts = request.json['watts']
-        query = conn.execute("insert into strikes values('{0}','{1}', '{2}', '{3}', '{4}')".format(nodeid, date, volts, amps, watts))
+        query = conn.execute("insert into strikes values('{0}', '{1}', '{2}', '{3}', '{4}')".format(nodeid, date, volts, amps, watts))
         return {'status':'success'}
 
 
