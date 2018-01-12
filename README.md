@@ -54,7 +54,7 @@ API Endpoint Resources:
 	/nodes/{nodeid}
 		GET - Get information on single node
 		PUT - Modify information on a single node
-		DELET - Delete node but not node data
+		DELETE - Delete node but not node data
 		
 	/nodes/{nodeid}/strikes
 		GET - List all strikes for {nodeid}
