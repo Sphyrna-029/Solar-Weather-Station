@@ -33,11 +33,11 @@
     <![endif]-->
 
     <style>
- 
+
           .placeholder{
             /*text-align: center;*/
           }
-          
+
           .outer_circle {
             margin: 0 auto;
             width: 200px;
@@ -50,12 +50,12 @@
             justify-content: center;
             align-items: center;
           }
-        
+
           .inner_circle{
             font-size: 90px;
             color: white;
           }
- 
+
           .inner_pcircle{
              font-size: 45px;
              color: white;
@@ -93,6 +93,12 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="index.php">Overview <span class="sr-only">(current)</span></a></li>
+            <?php
+                         while($nodeids = $nodes->fetchArray(SQLITE3_ASSOC) ) {
+                            echo '<li><a href="/index.php?node=' . $nodeids['nodeid'] . '">' . $nodeids['nodeid'] . '</a></li>';
+                         }
+
+            ?>
             <li><a href="/reports.php">Reports</a></li>
           </ul>
         </div>
@@ -140,7 +146,7 @@
                 </tr>
               </thead>
               <tbody>
-                  <?php 
+                  <?php
                          while($strikeTable = $strikeD->fetchArray(SQLITE3_ASSOC) ) {
                             echo "<tr>";
                             echo "<td>". $strikeTable['tdate'] . "</td>";
@@ -172,13 +178,13 @@
 
         function changeColor(val) {
             var color = "green";
-                
+
             if (val > 11 && val < 12) {
                 color = "yellow";
             } else if (val <= 11) {
                 color = "red";
             }
-    
+
             colorThreshold.style.color = color;
             console.log(colorThreshold)
             console.log(voltage)
