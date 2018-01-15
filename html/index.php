@@ -1,4 +1,12 @@
-<?php include("sql.php"); ?>
+<?php
+        if(isset($_GET['node'])){ ;
+                $nurlid = $_GET['node'];
+        } else {
+                $nurlid = "overview";
+        }
+
+        include("sql.php");
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -93,8 +101,9 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="index.php">Overview <span class="sr-only">(current)</span></a></li>
-            <!-- Pull list of configured nodes from database and generate links for each -->
             <?php
+                         debug_to_console( "105" );
+
                          while($nodeids = $nodes->fetchArray(SQLITE3_ASSOC) ) {
                             echo '<li><a href="/index.php?node=' . $nodeids['nodeid'] . '">' . $nodeids['nodeid'] . '</a></li>';
                          }
