@@ -86,11 +86,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Solar Weather Station</a>
+           <a class="navbar-brand" href="#">SWTv0.2</a>
+           <a class="navbar-brand">  Nodes Online:<?php echo $totalnodes;?></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"></a></li>
+            <li><a href="#">New Node</a></li>
           </ul>
         </div>
       </div>
