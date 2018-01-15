@@ -12,6 +12,7 @@
                 $pressure = $db->query('SELECT pressure, max(tdate) FROM multisensor;');
                 $volts = $db->query('SELECT bvolts, max(tdate) from power;');
                 $nodes = $db->query('SELECT * FROM nodes;');
+                $totalnodes = $db->querySingle('SELECT Count(*) FROM nodes WHERE status = 1;');
                 debug_to_console( "overview nodes hit" );
                 $bvolts = $volts->fetchArray();
                 $pressurepascals = $pressure->fetchArray();
