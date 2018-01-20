@@ -16,6 +16,7 @@ P.add_anchor('anchore_C',(-84.592682, 39.2528348))
 
 t,label=P.add_target()
 
+#0.009 = 1km
 t.add_measure('anchore_A',0.34)
 t.add_measure('anchore_B',0.34)
 t.add_measure('anchore_C',0.34)
