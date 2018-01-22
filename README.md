@@ -1,7 +1,7 @@
 ## Solar-Weather-Station
 
 
-A web front end for my solar powered weather station. Built on lighttp, sqlite3, and python. Capable of detecting lightning strikes but more features to come. Requires sqlite for php. 
+A web front end for my solar powered weather station. Built on Apache wsgi, sqlite3, PHP, and python. Capable of detecting lightning strikes but more features to come.
 
 **Live Demo:** http://weather.zerogravityantfarm.com/
 
@@ -35,6 +35,8 @@ CREATE TABLE power(nodeid TEXT, date DATE, volts NUMERIC, amps NUMERIC, watts NU
 
 CREATE TABLE multisensor(nodeid TEXT, date DATE, humidity NUMERIC, pressure NUMERIC, temperature NUMERIC);
 ```
+
+
 
 # Tiny API
 
