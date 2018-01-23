@@ -19,6 +19,8 @@ A web front end for my solar powered weather station. Built on Apache wsgi, sqli
  
  **INA219 High Side DC Current Sensor** - https://www.adafruit.com/product/904
 
+![alt text](https://i.imgur.com/kkbUGGT.png)
+
 
 
 
