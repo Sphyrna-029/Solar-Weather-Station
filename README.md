@@ -5,22 +5,24 @@ A web front end for my solar powered weather station. Built on Apache wsgi, sqli
 
 
 # Component List:
- LM2596 DC-DC Step Down Variable Voltage Regulator - https://www.amazon.com/eBoot-LM2596-Converter-3-0-40V-1-5-35V/dp/B01GJ0SC2C
+ **LM2596 DC-DC Step Down Variable Voltage Regulator** - https://www.amazon.com/eBoot-LM2596-Converter-3-0-40V-1-5-35V/dp/B01GJ0SC2C
  
- 35w Solar Panel - https://www.amazon.com/gp/product/B01G1II6LY/ref=oh_aui_detailpage_o01_s00?ie=UTF8&psc=1
+ **35w Solar Panel** - https://www.amazon.com/gp/product/B01G1II6LY/ref=oh_aui_detailpage_o01_s00?ie=UTF8&psc=1
  
- 12v 12AH battery - https://www.amazon.com/gp/product/B00A82A2ZS/ref=oh_aui_detailpage_o02_s00?ie=UTF8&psc=1
+ **12v 12AH battery** - https://www.amazon.com/gp/product/B00A82A2ZS/ref=oh_aui_detailpage_o02_s00?ie=UTF8&psc=1
  
- 12v 5a solar charge controller - https://www.amazon.com/gp/product/B00XTQ76WW/ref=oh_aui_detailpage_o01_s00?ie=UTF8&psc=1
+ **12v 5a solar charge controller** - https://www.amazon.com/gp/product/B00XTQ76WW/ref=oh_aui_detailpage_o01_s00?ie=UTF8&psc=1
  
- MOD-1016 AS3935 Lightning and Storm Sensor Module - https://www.embeddedadventures.com/as3935_lightning_sensor_module_mod-1016.html
+ **MOD-1016 AS3935 Lightning and Storm Sensor Module** - https://www.embeddedadventures.com/as3935_lightning_sensor_module_mod-1016.html
  
- Adafruit BME280 (Temperature, Pressure, Humidity) - https://www.adafruit.com/product/2652
+ **Adafruit BME280 (Temperature, Pressure, Humidity)** - https://www.adafruit.com/product/2652
  
- INA219 High Side DC Current Sensor - https://www.adafruit.com/product/904
+ **INA219 High Side DC Current Sensor** - https://www.adafruit.com/product/904
 
 
-**Live Demo:** http://weather.zerogravityantfarm.com/
+
+
+# Live Demo: http://weather.zerogravityantfarm.com/
 
 ![alt text](http://i.imgur.com/h6EX04n.png)
 
