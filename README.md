@@ -22,7 +22,8 @@ A web front end for my solar powered weather station. Built on Apache wsgi, sqli
 
 
 
-# Live Demo: http://weather.zerogravityantfarm.com/
+# Live Demo: 
+http://weather.zerogravityantfarm.com/
 
 ![alt text](http://i.imgur.com/h6EX04n.png)
 
