@@ -1,10 +1,10 @@
-## Solar-Weather-Station
+# Solar-Weather-Station
 
 
 A web front end for my solar powered weather station. Built on Apache wsgi, sqlite3, PHP, and python. Capable of detecting lightning strikes but more features to come. With the current power setup the station can run for 3 days of overcast. Moving the web server and databse off the pi could improve power consumption.
 
 
-# Component List:
+## Component List:
  **LM2596 DC-DC Step Down Variable Voltage Regulator** - https://www.amazon.com/eBoot-LM2596-Converter-3-0-40V-1-5-35V/dp/B01GJ0SC2C
  
  **35w Solar Panel** - https://www.amazon.com/gp/product/B01G1II6LY/ref=oh_aui_detailpage_o01_s00?ie=UTF8&psc=1
@@ -24,7 +24,7 @@ A web front end for my solar powered weather station. Built on Apache wsgi, sqli
 
 
 
-# Live Demo: 
+## Live Demo: 
 http://weather.zerogravityantfarm.com/
 
 ![alt text](http://i.imgur.com/h6EX04n.png)
@@ -36,7 +36,7 @@ http://weather.zerogravityantfarm.com/
 **Voltage/Current sensor:** https://github.com/chrisb2/pi_ina219
 
 
-# Cron Entries:
+## Cron Entries:
 */10 * * * * python /home/pi/WeatherDashboard/cpuTemp.py
 
 */10 * * * * python /home/pi/WeatherDashboard/MultiSensor.py
@@ -45,7 +45,7 @@ http://weather.zerogravityantfarm.com/
 
 
 
-# Database Schema (NEW):
+## Database Schema (NEW):
 ```
 CREATE TABLE nodes(nodeid TEXT, latitude NUMERIC, longitude NUMERIC, status NUMERIC, dateadded DATE);
 		
@@ -58,7 +58,7 @@ CREATE TABLE multisensor(nodeid TEXT, date DATE, humidity NUMERIC, pressure NUME
 
 
 
-# Tiny API
+## Tiny API
 
 Implemented a small api in flask and apache wsgi. Goals are to allow multiple weather stations to communicate with one server allowing station monitoring, lightning triangulation, and weather modeling. 
 
