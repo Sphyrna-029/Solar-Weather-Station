@@ -100,7 +100,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <div style="padding-top: 5px;">
-               <a class="btn btn-primary btn" href="/index.php?page=nodes" role="button">New node</a>
+               <a class="btn btn-primary btn" href="/?page=nodes" role="button">New node</a>
             </div>
           </ul>
         </div>
@@ -111,16 +111,17 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="index.php">Overview <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="/?page=home">Overview <span class="sr-only">(current)</span></a></li>
             <?php
                          debug_to_console( "105" );
 
                          while($nodeids = $nodes->fetchArray(SQLITE3_ASSOC) ) {
-                            echo '<li><a href="/index.php?node=' . $nodeids['nodeid'] . '">' . $nodeids['nodeid'] . '</a></li>';
+                            echo '<li><a href="/?node=' . $nodeids['nodeid'] . '">' . $nodeids['nodeid'] . '</a></li>';
                          }
 
             ?>
-            <li><a href="/reports.php">Reports</a></li>
+            <li><a href="/?page=reports">Reports</a></li>
+            <li><a href="/?page=strikes">Strike Locations</a></li>
           </ul>
         </div>
         <?php
@@ -137,6 +138,9 @@
                     break;
                 case 'reports':
                     include 'reports.php';
+                    break;
+                case 'strikes':
+                    include 'strikes.php';
                     break;
                 default:
                     include 'home.php';
