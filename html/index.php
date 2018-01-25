@@ -11,6 +11,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="manifest.json">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,7 +26,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Simple Weather Station v1.0</title>
+    <title>SolarWeatherStationv0.2</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
@@ -86,12 +93,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-           <a class="navbar-brand" href="#">SWTv0.2</a>
-           <a class="navbar-brand">  Nodes Online:<?php echo $totalnodes;?></a>
+           <a class="navbar-brand" href="#">SolarWeatherStationv0.2</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">New Node</a></li>
+            <div style="padding-top: 5px;">
+               <a class="btn btn-primary btn" href="/index.php?page=nodes" role="button">New node</a>
+            </div>
           </ul>
         </div>
       </div>
@@ -113,62 +121,26 @@
             <li><a href="/reports.php">Reports</a></li>
           </ul>
         </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Dashboard<div class="pull-right" class="align-middle"><img src="/images/battery.png" width="50" height="50"><span id="volts"><?php echo $bvolts[0];?>v</span></div></h1>
+        <?php
 
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <div class="outer_circle">
-                <div class="inner_circle"><?php echo $temprow[0];?>c</div>
-              </div>
-              <h4>Temperature</h4>
-              <span class="text-muted">Celcius</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <div class="outer_circle">
-                <div class="inner_circle"><?php echo $strikesrow[0];?></div>
-              </div>
-              <h4>Lightning Strikes</h4>
-              <span class="text-muted">Past 24 Hours</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <div class="outer_circle">
-                 <div class="inner_circle"><?php echo $humiditypercent[0];?>%</div>
-            </div>
-              <h4>Humidity</h4>
-              <span class="text-muted">Percentage</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <div class="outer_circle">
-                  <div class="inner_pcircle"><?php echo $pressurepascals[0];?>hPa</div>
-              </div>
-              <h4>Pressure</h4>
-              <span class="text-muted">hectopascals</span>
-            </div>
-          </div>
+            $page = $_GET["page"];
 
-          <h2 class="sub-header">Lightning Strikes  <img src="/images/stormy.png" width="50" height="50"></h2>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Time</th>
-                  <th>Distance Km</th>
-                </tr>
-              </thead>
-              <tbody>
-                  <?php
-                         while($strikeTable = $strikeD->fetchArray(SQLITE3_ASSOC) ) {
-                            echo "<tr>";
-                            echo "<td>". $strikeTable['tdate'] . "</td>";
-                            echo "<td>". $strikeTable['distance'] . "</td>";
-                            echo "</tr>";
-                         }
-                         $db->close();
-                   ?>
-              </tbody>
-            </table>
-          </div>
+
+            switch ($page) {
+                case 'home':
+                    include 'home.php';
+                    break;
+                case 'nodes':
+                    include 'nodes.php';
+                    break;
+                case 'reports':
+                    include 'reports.php';
+                    break;
+                default:
+                    include 'home.php';
+
+            }
+        ?>
         </div>
       </div>
     </div>
