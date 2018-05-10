@@ -11,7 +11,11 @@ A web front end for my solar powered weather station. Built on Apache wsgi, sqli
  
  **12v 12AH battery** - https://www.amazon.com/gp/product/B00A82A2ZS/ref=oh_aui_detailpage_o02_s00?ie=UTF8&psc=1
  
- **12v 5a solar charge controller** - https://www.amazon.com/gp/product/B00XTQ76WW/ref=oh_aui_detailpage_o01_s00?ie=UTF8&psc=1
+ **12v 5a solar charge controller** - Went through two of these in a year https://www.amazon.com/gp/product/B00XTQ76WW/ref=oh_aui_detailpage_o01_s00?ie=UTF8&psc=1
+ 
+ Testing a different model now (found here): https://www.amazon.com/gp/product/B007VLMRP2/ref=oh_aui_detailpage_o00_s00?ie=UTF8&psc=1
+ 
+ 
  
  **MOD-1016 AS3935 Lightning and Storm Sensor Module** - https://www.embeddedadventures.com/as3935_lightning_sensor_module_mod-1016.html
  
