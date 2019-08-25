@@ -57,14 +57,9 @@ CREATE TABLE multisensor(nodeid TEXT, date DATE, humidity NUMERIC, pressure NUME
 ```
 
 
-
 ## Tiny API
 
 Implemented a small api in flask and apache wsgi. Goals are to allow multiple weather stations to communicate with one server allowing station monitoring, lightning triangulation, and weather modeling. 
-
-**Live Demo:** <br />
-http://api.zerogravityantfarm.com/nodes <br />
-http://api.zerogravityantfarm.com/nodes/node1/strikes <br />
 
 **API Endpoint Resources:**
 
