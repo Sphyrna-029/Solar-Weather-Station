@@ -1,6 +1,6 @@
 # Solar-Weather-Station
 
-DEAD PROJECT - GO HERE INSTEAD: https://github.com/BuckarewBanzai/Storm-Cloud
+### DEAD PROJECT - GO HERE INSTEAD: https://github.com/BuckarewBanzai/Storm-Cloud
 
 A web front end for my solar powered weather station. Built on Apache wsgi, sqlite3, PHP, and python. Capable of detecting lightning strikes but more features to come. With the current power setup the station can run for 3 days of overcast. Moving the web server and databse off the pi could improve power consumption.
 
